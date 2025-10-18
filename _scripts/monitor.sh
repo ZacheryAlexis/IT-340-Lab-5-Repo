@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Define paths
+SCRIPT_DIR="/home/developers/Lab_5_workspace/_scripts"
+LOG_DIR="$SCRIPT_DIR/logs"
+LOG_FILE="$LOG_DIR/system.log"
+
+# Create log directory if it doesn't exist
+mkdir -p "$LOG_DIR"
+
+# Get current timestamp
+TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+
+# Collect system information
+UPTIME=$(uptime -p)
+MEMORY_USAGE=$(free -h | awk '/^Mem:/ {print "Total: " $2 ", Used: " $3 ", Free: " $4}')
+DISK_USAGE=$(df -h / | awk 'NR==2 {print "Root (/): " $5 " used (" $3 "/" $2 ")"}')
+
+# Log the information in a readable format
+{
+    echo "============================================"
+    echo "System Resource Report - $TIMESTAMP"
+    echo "============================================"
+    echo "Uptime: $UPTIME"
+    echo "Memory Usage: $MEMORY_USAGE"
+    echo "Disk Usage: $DISK_USAGE"
+    echo "--------------------------------------------"
+    echo ""
+} >> "$LOG_FILE"   

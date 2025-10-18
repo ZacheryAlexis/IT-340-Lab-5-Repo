@@ -1,0 +1,50 @@
+#!/bin/bash
+
+
+
+# Define script directory
+
+SCRIPT_DIR="/home/developers/Lab_5_workspace/_scripts"
+
+
+
+# Prompt for user information
+
+echo "First Name: "
+
+read fname
+
+
+
+echo "Last Name: "
+
+read lname
+
+
+
+echo "Number of Hours Worked: "
+
+read hours
+
+
+
+echo "Description of Work: "
+
+read description
+
+
+
+# Display confirmation (optional)
+
+echo ""
+
+echo "Timesheet Entry Created:"
+
+echo "Name: $fname $lname"
+
+echo "Hours Worked: $hours"
+
+echo "Work Description: $description"   
+
+{ 
+ 
